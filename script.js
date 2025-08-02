@@ -120,13 +120,29 @@ function displayProducts(products) {
     const scrollHint = desc.parentElement.querySelector(".scroll-hint");
 
     /* Check if content overflows the container */
-    if (desc.scrollHeight > desc.clientHeight) {
-      desc.classList.add("has-overflow");
-      scrollHint.style.display = "block";
-    } else {
-      desc.classList.remove("has-overflow");
-      scrollHint.style.display = "none";
+    function checkOverflow() {
+      if (desc.scrollHeight > desc.clientHeight) {
+        desc.classList.add("has-overflow");
+        scrollHint.style.display = "block";
+      } else {
+        desc.classList.remove("has-overflow");
+        scrollHint.style.display = "none";
+      }
     }
+
+    /* Initial check */
+    checkOverflow();
+
+    /* Add scroll listener to handle fade effect better */
+    desc.addEventListener("scroll", () => {
+      const isScrolledToBottom = desc.scrollTop + desc.clientHeight >= desc.scrollHeight - 2;
+      
+      if (isScrolledToBottom) {
+        desc.classList.add("scrolled-to-bottom");
+      } else {
+        desc.classList.remove("scrolled-to-bottom");
+      }
+    });
   });
 
   /* Add click event listeners to select buttons on card backs */

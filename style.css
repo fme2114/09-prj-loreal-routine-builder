@@ -427,21 +427,22 @@ body {
   background: #a8a8a8;
 }
 
-/* Add fade effect at bottom when content overflows */
+/* Simplified fade effect that's less intrusive */
 .product-description::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 5px;
-  height: 15px;
-  background: linear-gradient(transparent, #f8f8f8);
+  height: 10px; /* Reduced height */
+  background: linear-gradient(transparent, rgba(248, 248, 248, 0.8)); /* More transparent */
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
-.product-description.has-overflow::after {
+/* Show fade when there's overflow but not when scrolled to bottom */
+.product-description.has-overflow:not(.scrolled-to-bottom)::after {
   opacity: 1;
 }
 
@@ -775,9 +776,21 @@ body {
   }
 
   .product-card-front,
+  .product-card-front,
   .product-card-back {
     min-height: 140px;
     padding: 12px;
+  }
+
+  /* Fix product description alignment on mobile */
+  .product-card-back {
+    text-align: center; /* Center the content on mobile */
+    align-items: center; /* Center align flex items */
+  }
+
+  .product-description {
+    text-align: left; /* Keep description text left-aligned for readability */
+    width: 100%; /* Full width for better layout */
   }
 
   .product-card img {
@@ -811,6 +824,7 @@ body {
   .product-description h4 {
     font-size: 12px;
     margin-bottom: 4px;
+    text-align: center; /* Center the title on mobile */
   }
 
   .select-product-btn {
