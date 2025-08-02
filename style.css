@@ -336,6 +336,8 @@ body {
 
 .product-card-front {
   background: white;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally if needed */
 }
 
 .product-card-back {
@@ -361,8 +363,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; /* Center content horizontally within product-info */
   min-height: 110px;
   overflow: hidden; /* Prevent text overflow from card */
+  text-align: center; /* Center the text */
 }
 
 .product-card h3 {
@@ -435,7 +439,10 @@ body {
   left: 0;
   right: 5px;
   height: 10px; /* Reduced height */
-  background: linear-gradient(transparent, rgba(248, 248, 248, 0.8)); /* More transparent */
+  background: linear-gradient(
+    transparent,
+    rgba(248, 248, 248, 0.8)
+  ); /* More transparent */
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease;

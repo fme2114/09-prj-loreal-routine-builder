@@ -135,8 +135,9 @@ function displayProducts(products) {
 
     /* Add scroll listener to handle fade effect better */
     desc.addEventListener("scroll", () => {
-      const isScrolledToBottom = desc.scrollTop + desc.clientHeight >= desc.scrollHeight - 2;
-      
+      const isScrolledToBottom =
+        desc.scrollTop + desc.clientHeight >= desc.scrollHeight - 2;
+
       if (isScrolledToBottom) {
         desc.classList.add("scrolled-to-bottom");
       } else {
